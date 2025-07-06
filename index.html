@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You Jaanuuu</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle, #ffccd5, #ffb3c6);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Cursive', sans-serif;
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px 50px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(5px);
+      text-align: center;
+      color: white;
+    }
+
+    .message h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #fff;
+    }
+
+    .message p {
+      font-size: 1.2em;
+      color: #fff;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in-out;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1>I Love You Jaanuuuhhh 💖</h1>
+    <p>Each moment with you is precious ♥</p>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+      // Add click/touch interaction
+      heart.addEventListener("click", showQuote);
+      heart.addEventListener("touchstart", showQuote);
+
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function showQuote(e) {
+      // Remove heart
+      e.target.remove();
+
+      // Create popup quote
+      const quote = document.createElement("div");
+      quote.innerText = "Your Patti Vishnu will always love you kunjeee 💖";
+      quote.style.position = "absolute";
+      quote.style.left = e.clientX + "px";
+      quote.style.top = e.clientY + "px";
+      quote.style.padding = "10px 15px";
+      quote.style.background = "rgba(255,255,255,0.95)";
+      quote.style.borderRadius = "15px";
+      quote.style.fontSize = "1em";
+      quote.style.fontFamily = "cursive";
+      quote.style.color = "#ff0066";
+      quote.style.boxShadow = "0 0 10px pink";
+      quote.style.transform = "translate(-50%, -50%) scale(1)";
+      quote.style.transition = "all 1s ease";
+      quote.style.zIndex = "999";
+
+      document.body.appendChild(quote);
+
+      setTimeout(() => {
+        quote.style.opacity = "0";
+        quote.style.transform = "translate(-50%, -150%) scale(1.5)";
+      }, 50);
+
+      setTimeout(() => quote.remove(), 2000);
+    }
+  </script>
+</body>
+</html>
